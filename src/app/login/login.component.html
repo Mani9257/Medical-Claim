@@ -1,0 +1,42 @@
+<!-- <img id="Image1" src="assets/Loginbanner.jpg" align="top" border="0" style="height:124px;width:100%;"> -->
+  <img class="imageBack" src="assets/hearthealth.jpg" alt="ing-logo">
+<div class="container col-md-4 login-form" style="border-radius: 0.5em;
+margin: 0 auto;
+display: block;
+background-color: rgba(249, 243, 247, 0.88) !important;
+padding: 6em;
+margin-right:80px;
+margin-top:50px"
+>
+
+<h2 style="margin: 0 auto; display: block; margin-top: -1em;
+margin-bottom: 1em;">Login</h2>
+
+ <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+      <label for="loginId">Login Id</label>
+      <input type="text" formControlName="loginId" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.loginId.errors }" />
+      <div *ngIf="submitted && f.loginId.errors" class="invalid-feedback">
+          <div *ngIf="f.loginId.errors.required">Login Id is required</div>
+      </div>
+  </div>
+  <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+          <div *ngIf="f.password.errors.required">Password is required</div>
+      </div>
+  </div>
+  <div class="form-group">
+      <button type="submit" class="btn btn-primary">Login</button>
+      <!-- <a [routerLink]="['/register']" class="btn btn-link">Register</a> -->
+  </div>
+  <!-- display validation message button click -->
+  <div class="alert alert-danger" *ngIf="showloginmsg">
+    <strong>Info!</strong> User Name or password incorrect. 
+  </div>
+</form>
+</div>
+
+<!-- <div class="col-md-6">1</div>
+    <div class="col-md-6">2</div> -->

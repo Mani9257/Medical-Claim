@@ -1,0 +1,98 @@
+  <img class="imageBack" src="assets/hearthealth.jpg" alt="ing-logo">
+  
+<div class="container" >
+
+    <div class="row">
+    <div class="col-lg-12" style="margin-top:30px">
+    <p-messages [(value)]="msgs"></p-messages> 
+        <h2>Medical Claim </h2>
+    </div>
+    </div>
+
+
+    <form [formGroup]="claimForm" (ngSubmit)="onSubmit()">
+<div class="row" style="padding-top:60px;background-color: #a9a1a1;">
+
+    <div class="col-lg-3">
+            <label for="pName"><strong>Patient Name</strong></label>
+            <input type="text" formControlName="pName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.pName.errors }" />
+            <!-- <input type="text" formControlName="pName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.pName.errors }" /> -->
+            <div *ngIf="submitted && f.pName.errors" class="invalid-feedback">
+                <div *ngIf="f.pName.errors.required">Patient's Name is required</div>
+            </div>
+    </div>
+   
+    <div class="col-lg-3">
+            <label for="aDate"><strong>Admission Date</strong></label>
+            <input type="date" data-date-format="YYYY-MM-DD" formControlName="aDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.aDate.errors }" />
+            <div *ngIf="submitted && f.aDate.errors" class="invalid-feedback">
+                <div *ngIf="f.aDate.errors.required">Addmission Date  is required</div>
+            </div>
+    </div>
+    <div class="col-lg-3">
+            <label for="dDate"><strong>Discharge Date</strong></label>
+            <input type="date" formControlName="dDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dDate.errors }" />
+            <div *ngIf="submitted && f.dDate.errors" class="invalid-feedback">
+                <div *ngIf="f.dDate.errors.required">Discharge Date is required</div>
+            </div>
+    </div>
+    <div class="col-lg-3">
+            <label for="cType"><strong>Claim Type</strong></label>
+
+            <select id="company" class="form-control" formControlName = "cType">
+                 <option>Select</option>
+               <option *ngFor="let claimTyp of claimTypeDetailsE " [ngValue]="claimTyp.policyId">
+                           {{claimTyp.policyType}}
+                </option>
+             </select>  
+            <!-- <p-dropdown [options]="claimTypeDetailsE" formControlName = "claimtype" placeholder="Select a ClaimType" optionLabel="policyType" [showClear]="true"></p-dropdown> -->
+    </div>
+</div>
+<div class="row" style="padding-top:20px;background-color: #a9a1a1;padding-bottom: 45px">
+    <div class="col-lg-3" *ngIf="hospitalDetails != undefined">
+            <label for="hName"><strong>Hospital Name</strong></label>
+           <select id="company" class="form-control" formControlName = "hos">
+               
+         <option>Select</option>
+        <option *ngFor="let hos of hospitalDetailsE" [ngValue]="hos.hospitalId">
+                {{hos.hospitalName}}
+            </option>
+      </select>  
+           <!-- <p-dropdown [options]="hospitalDetailsE" formControlName = "hos" placeholder="Select a Hospital Name" optionLabel="hospitalName" [showClear]="true"></p-dropdown> -->
+    </div>
+    <div class="col-lg-3">
+            <label for="docName"><strong>Doctor Name</strong></label>
+            <input type="docName" formControlName="docName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.docName.errors }" />
+            <div *ngIf="submitted && f.docName.errors" class="invalid-feedback">
+                <div *ngIf="f.docName.errors.required">Doctor Name is required</div>
+            </div>
+    </div>
+    <div class="col-lg-3">
+            <label for="clmAmount"><strong>Claim Amount</strong></label>
+            <input type="clmAmount" formControlName="clmAmount" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.clmAmount.errors }" />
+            <div *ngIf="submitted && f.clmAmount.errors" class="invalid-feedback">
+                <div *ngIf="f.clmAmount.errors.required">Claim Amount is required</div>
+            </div>
+    </div>
+    <div class="col-lg-3">
+            <label for="password"><strong>Upload Document</strong></label>
+            <!-- <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">Password is required</div>
+            </div> -->
+            <input type="file" id="myFile" name="filename2">
+    </div>
+</div>
+<div style="margin-top:50px; margin-left:450px">
+        <button type="submit" class="btn btn-success">Submit Claim</button>
+           </div>
+
+           
+</form>
+<!-- <<div class="alert alert-success" *ngIf="showloginmsg">
+                <strong>Info!</strong> Your Claim saved Successfully. 
+            </div> -->
+
+</div>
+
+

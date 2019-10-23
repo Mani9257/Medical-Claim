@@ -1,0 +1,36 @@
+<div class="container" style="margin-top:30px">
+  <p-messages [(value)]="msgs"></p-messages>
+  <h2 class="mb40">Admin Approve/ Reject</h2>
+  <!-- Approve/Reject Table     -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Claim ID</th>
+        <th>Policy Type</th>
+        <th>Claimed Amount(INR)</th>
+        <th>Eligibility Amount(INR)</th>
+        <th>Doctor Name</th>
+        <th>Action</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ad of AdminDetails">
+        <td>{{ad.claimId}}</td>
+        <td>{{ad.policyName}}</td>
+        <td>{{ad.claimAmount}}</td>
+        <td>{{ad.eligibleAmount}}</td>
+        <td>{{ad.doctor}}</td>
+
+        <td>
+          <button type="button" class="btn btn-success mr15"
+            (click)="onApproveRejectClick('APPROVED',ad.claimId)">Approve</button>
+          <button type="button" class="btn btn-danger"
+            (click)="onApproveRejectClick('REJECTED',ad.claimId)">Reject</button>
+        </td>
+      </tr>
+
+
+    </tbody>
+  </table>
+</div>

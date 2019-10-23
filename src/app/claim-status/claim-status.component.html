@@ -1,0 +1,35 @@
+ <!-- background image -->
+<img class="imageBack" src="assets/hearthealth.jpg" alt="ing-logo">
+
+<div class="container" style="margin-top:30px">
+
+  <h2 class="mb53">Claim Status</h2>
+  <!-- Claim Status Table -->
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th>Claim ID</th>
+        <th>Claim Raised Date</th>
+        <th>Claimed Amount(INR)</th>
+        <th>Claim Type</th>
+        <th>First Level Approval</th>
+
+        <th>Second Level Approval </th>
+
+      </tr>
+    </thead>
+    <tbody style="background-color:#fdf7f8">
+      <tr>
+        <td>{{claimStatusDetails.claimId}}</td>
+        <td>{{claimStatusDetails.claimRaisedDate}}</td>
+        <td>{{claimStatusDetails.claimAmount}}</td>
+        <td>{{claimStatusDetails.claimType}}</td>
+        <td>{{claimStatusDetails.claimFirstLevelStatus}}</td>
+        <td>{{claimStatusDetails.claimSecondLevelStatus}}</td>
+
+      </tr>
+
+    </tbody>
+  </table>
+
+</div>
